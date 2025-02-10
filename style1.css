@@ -89,15 +89,11 @@
 
 .dashboard {
     width: 100vw;
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+    height: 50vh;
 }
 .dashboard-text {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,13 +101,15 @@
     h1 {
         font-size: 44px;
         font-weight: bold;
+        margin-top: 36px;
+        color: #333;
     }
-    .Timestamp-Nitrogen {
+    .tnpp {
         width: 70%;
         height: 100px;
         margin-top: 32px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         h2 {
             font-size: 28px;
             font-weight: bold;
@@ -120,11 +118,15 @@
             margin-top: 12px;
             font-size: 24px;
         }
+        .m {
+            margin-right: 22px;
+            border-radius: 12px;
+        }
         .Timestamp {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -135,10 +137,10 @@
             background-color: #333;
         }
         .Nitrogen {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -148,27 +150,11 @@
         .Nitrogen:hover {
             background-color: #333;
         }
-    }
-
-    .Phosphorus-Potassium{
-        width: 70%;
-        height: 100px;
-        margin-top: 12px;
-        display: flex;
-        justify-content: space-between;
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        p {
-            margin-top: 12px;
-            font-size: 24px;
-        }
         .Phosphorus {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -179,10 +165,10 @@
             background-color: #333;
         }
         .Potassium {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -193,13 +179,12 @@
             background-color: #333;
         }
     }
-
-    .Temperature-Humidity{
+    .thpr{
         width: 70%;
         height: 100px;
         margin-top: 12px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         h2 {
             font-size: 28px;
             font-weight: bold;
@@ -208,11 +193,15 @@
             margin-top: 12px;
             font-size: 24px;
         }
+        .m {
+            margin-right: 22px;
+            border-radius: 12px;
+        }
         .Temperature {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -223,10 +212,10 @@
             background-color: #333;
         }
         .Humidity {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -236,27 +225,11 @@
         .Humidity:hover {
             background-color: #333;
         }
-    }
-
-    .PH-Rainfall{
-        width: 70%;
-        height: 100px;
-        margin-top: 12px;
-        display: flex;
-        justify-content: space-between;
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        p {
-            margin-top: 12px;
-            font-size: 24px;
-        }
         .PH {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -267,10 +240,10 @@
             background-color: #333;
         }
         .Rainfall {
-            width: 40%;
-            height: 100%;
-            background-color: black;
-            border-radius: 50px;
+            width: 18%;
+            height: 90%;
+            background-color: #63594C;
+            border: 2px solid #FFEAD9;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -282,7 +255,23 @@
         }
     }
 }
-.dashboard-image {
-    width: 50%;
-    height: 100%;
+.chart1 {
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+.chart {
+    padding: 2rem;
+    border: 1px solid #f49131;
+    border-radius: 1rem;
+    background: black;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
