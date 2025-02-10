@@ -1,0 +1,11 @@
+UserID,Username,Password,Email,UserRole
+1,Alice,1234,,Consultant
+2,Bob,12345,,Admin
+3,Charlie,123456,,Farmer
+4,David,1234567,,Farmer
+5,Eve,123a,,Farmer
+6,Frank,123b,,Consultant
+7,Grace,123c,,Admin
+8,Henry,123e,,Admin
+9,Ivy,123r,,Admin
+10,Jack,123y,,Farmer

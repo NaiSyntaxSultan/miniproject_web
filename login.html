@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSync</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="info">
+            <h1 data-aos="zoom-out-down">GreenSync</h1>
+
+            <div class="btn">
+                <a href="register.html" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"><button>Sign Up</button></a>
+                <a href="login.html" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"><button class="active">Log in</button></a>
+            </div>
+
+            <h2 style="margin-right: 80px;" data-aos="zoom-in-up">Journey Begins</h2>
+            <p data-aos="zoom-in-up">Log in with Open account</p>
+
+            <div class="social">
+                <div class="icon" data-aos="fade-up" data-aos-duration="1500">
+                    <a href="#"><i class="fa-brands fa-apple"></i></a>
+                </div>
+                <div class="icon" data-aos="fade-up" data-aos-duration="2000">
+                    <a href="#"><i class="fa-brands fa-steam"></i></a>
+                </div>
+                <div class="icon" data-aos="fade-up" data-aos-duration="2500">
+                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                </div>
+            </div>
+            <div class="hr-container" data-aos="fade-up" data-aos-duration="3000">
+                <hr>
+                    <span>or</span>
+                <hr>
+            </div>
+
+            <form id="loginForm">
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="submit" value="Log in" class="btn1">
+            </form>
+        </div>
+        <div class="img" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+            <img src="img/2.jpg">
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // ❗ ป้องกันการ reload หน้าเว็บ
+
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+
+                if (!username || !password) {
+                    alert('Please enter both username and password');
+                    return;
+                }
+
+                fetch('http://localhost:3000/clinic/login', {
+                    method: 'POST', // 
+                    headers: {
+                        'Content-Type': 'application/json' // บอกเซิร์ฟเวอร์ว่าเป็น JSON
+                    },
+                    body: JSON.stringify({ username, password }) // ส่งค่าที่ผู้ใช้กรอกไปให้เซิร์ฟเวอร์
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Login successful');
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Invalid username or password');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
