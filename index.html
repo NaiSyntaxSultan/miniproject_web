@@ -3,9 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GreenSync</title>
+
+    <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-    <h1>HelloWorld</h1>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <h1>GreenSync</h1>
+        </div>
+        <div class="nav-links">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <a href="register.html">Sign Up</a>
+            <a href="login.html">Log In</a>
+        </div>
+    </nav>
+
+    <div class="background">
+        <div class="text-overlay">Smart Farm Monitoring</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eius eos quod a quo. Quasi magnam eum neque aliquam! Illo! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem itaque cum vitae ea sunt totam ab impedit, quod unde perferendis!</p>
+        
+        <div class="buttons">
+            <a class="btn">Learn More</a>
+            <a class="btn">Get Started</a>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="dashboard-text">
+            <h1>Real Time</h1>
+            <div class="Timestamp-Nitrogen">
+                <div class="Timestamp">
+                    <h2>Timestamp</h2>
+                    <p id="timestamp">0</p>
+                </div>
+                <div class="Nitrogen">
+                    <h2>Nitrogen</h2>
+                    <p id="nitrogen">0</p>
+                </div>
+            </div>
+            
+            <div class="Phosphorus-Potassium">
+                <div class="Phosphorus">
+                    <h2>Phosphorus</h2>
+                    <p id="phosphorus">0</p>
+                </div>
+                <div class="Potassium">
+                    <h2>Potassium</h2>
+                    <p id="potassium">0</p>
+                </div>
+            </div>
+            
+            <div class="Temperature-Humidity">
+                <div class="Temperature">
+                    <h2>Temperature</h2>
+                    <p id="temperature">0</p>
+                </div>
+                <div class="Humidity">
+                    <h2>Humidity</h2>
+                    <p id="humidity">0</p>
+                </div>
+            </div>
+            
+            <div class="PH-Rainfall">
+                <div class="PH">
+                    <h2>PH</h2>
+                    <p id="ph">0</p>
+                </div>
+                <div class="Rainfall">
+                    <h2>Rainfall</h2>
+                    <p id="rainfall">0</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="dashboard-image">
+            <img src="images/dashboard.png" alt="Dashboard">
+        </div>
+    </div>
+
+
+<script>
+    function fetchSensorData() {
+            fetch("http://localhost:3000/clinic/sensor/realtime", {
+                method: "GET"
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    console.log("New Data Received:", data.data);
+
+                    // แปลง Timestamp เป็นเวลาท้องถิ่น (ประเทศไทย)
+                    let localTime = new Date(data.data.Timestamp).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+
+                    document.getElementById("timestamp").innerText = localTime;
+                    document.getElementById("nitrogen").innerText = data.data.Nitrogen;
+                    document.getElementById("phosphorus").innerText = data.data.Phosphorus;
+                    document.getElementById("potassium").innerText = data.data.Potassium;
+                    document.getElementById("temperature").innerText = data.data.Temperature;
+                    document.getElementById("humidity").innerText = data.data.Humidity;
+                    document.getElementById("ph").innerText = data.data.PH;
+                    document.getElementById("rainfall").innerText = data.data.Rainfall;
+                } else {
+                    console.warn("No new data available.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching sensor data:", error);
+            });
+        }
+
+        // เรียก API ทุก 1 วินาที
+        setInterval(fetchSensorData, 1000);
+        
+        // โหลดข้อมูลทันทีเมื่อหน้าเว็บเปิดขึ้น
+        fetchSensorData();
+
+</script>
 </body>
 </html>

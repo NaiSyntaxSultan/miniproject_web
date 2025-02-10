@@ -46,5 +46,47 @@ module.exports = (db) => {
     });
   });
   
+  let sensorData = []; // เก็บข้อมูลทั้งหมดจากฐานข้อมูล
+  let currentIndex = 0; // เก็บตำแหน่งปัจจุบันของข้อมูลที่จะแสดง
+
+// โหลดข้อมูลเซ็นเซอร์ทั้งหมดจากฐานข้อมูล
+const loadSensorData = () => {
+    db.query("SELECT * FROM sensors ORDER BY Timestamp ASC", (err, results) => {
+        if (err) {
+            console.error("Database error:", err);
+            return;
+        }
+        if (results.length > 0) {
+            sensorData = results;
+            currentIndex = 0;
+            console.log("Loaded sensor data:", sensorData.length, "rows");
+        }
+    });
+};
+
+// โหลดข้อมูลทันทีที่เซิร์ฟเวอร์เริ่มทำงาน
+loadSensorData();
+
+// API ดึงข้อมูลเซ็นเซอร์ตามลำดับ (แถวแรกไปแถวสุดท้าย)
+router.get('/sensor/realtime', (req, res) => { 
+    if (sensorData.length === 0) {
+        return res.status(404).json({ success: false, message: "No sensor data available" });
+    }
+
+    // ดึงข้อมูลแถวปัจจุบัน
+    const data = sensorData[currentIndex];
+
+    // แปลง Timestamp เป็นวัน/เดือน/ปี เวลา
+    let timestamp = new Date(data.Timestamp);
+    let formattedDate = timestamp.toLocaleDateString("en-GB"); // DD/MM/YYYY
+    let formattedTime = timestamp.toLocaleTimeString("en-GB"); // HH:mm:ss
+    data.Timestamp = `${formattedDate} ${formattedTime}`;
+
+    // ไปแถวถัดไป หรือวนกลับไปที่แถวแรกหากถึงแถวสุดท้าย
+    currentIndex = (currentIndex + 1) % sensorData.length;
+
+    res.json({ success: true, data });
+});
+
   return router; // Return the router instance
 };

@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.navbar {
+    width: 100vw;
+    height: 6vh;
+    background-color: #63594C;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    ul {
+        li {
+            list-style: none;
+            margin: 0 10px;
+            a {
+                color: white;
+            }
+        }
+    }
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    a {
+        padding: 5px 10px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: skyblue;
+        color: #fff;
+        cursor: pointer;
+    }
+    a:hover {
+        background-color: #555;
+    }
+}
+
+.background {
+    position: relative;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),url(img/3.jpg);
+    background-size: cover;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        width: 50%;
+        color: white;
+        font-size: 20px;
+    }
+}
+.text-overlay {
+    color: white;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.buttons {
+    .btn {
+        padding: 10px 20px;
+        margin: 10px;
+        margin-top: 38px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.dashboard {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.dashboard-text {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+        font-size: 44px;
+        font-weight: bold;
+    }
+    .Timestamp-Nitrogen {
+        width: 70%;
+        height: 100px;
+        margin-top: 32px;
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 12px;
+            font-size: 24px;
+        }
+        .Timestamp {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Timestamp:hover{
+            background-color: #333;
+        }
+        .Nitrogen {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Nitrogen:hover {
+            background-color: #333;
+        }
+    }
+
+    .Phosphorus-Potassium{
+        width: 70%;
+        height: 100px;
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 12px;
+            font-size: 24px;
+        }
+        .Phosphorus {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Phosphorus:hover {
+            background-color: #333;
+        }
+        .Potassium {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Potassium:hover {
+            background-color: #333;
+        }
+    }
+
+    .Temperature-Humidity{
+        width: 70%;
+        height: 100px;
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 12px;
+            font-size: 24px;
+        }
+        .Temperature {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Temperature:hover{
+            background-color: #333;
+        }
+        .Humidity {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Humidity:hover {
+            background-color: #333;
+        }
+    }
+
+    .PH-Rainfall{
+        width: 70%;
+        height: 100px;
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        p {
+            margin-top: 12px;
+            font-size: 24px;
+        }
+        .PH {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .PH:hover {
+            background-color: #333;
+        }
+        .Rainfall {
+            width: 40%;
+            height: 100%;
+            background-color: black;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .Rainfall:hover {
+            background-color: #333;
+        }
+    }
+}
+.dashboard-image {
+    width: 50%;
+    height: 100%;
+}
