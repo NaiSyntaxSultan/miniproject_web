@@ -5,50 +5,6 @@
     text-decoration: none;
 }
 
-.navbar {
-    width: 100vw;
-    height: 6vh;
-    background-color: #63594C;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-}
-.nav-links {
-    display: flex;
-    justify-content: space-around;
-    ul {
-        li {
-            list-style: none;
-            margin: 0 10px;
-            a {
-                color: white;
-            }
-        }
-    }
-}
-.buttons {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    a {
-        padding: 5px 10px;
-        margin: 0 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: skyblue;
-        color: #fff;
-        cursor: pointer;
-    }
-    a:hover {
-        background-color: #555;
-    }
-}
-
 .background {
     position: relative;
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),url(img/3.jpg);
@@ -87,191 +43,63 @@
     }
 }
 
+.info {
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .dashboard {
     width: 100vw;
-    height: 50vh;
-}
-.dashboard-text {
-    width: 100%;
-    height: 70%;
+    height: 550px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    h1 {
-        font-size: 44px;
-        font-weight: bold;
-        margin-top: 36px;
-        color: #333;
-    }
-    .tnpp {
-        width: 70%;
-        height: 100px;
-        margin-top: 32px;
-        display: flex;
-        justify-content: center;
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        p {
-            margin-top: 12px;
-            font-size: 24px;
-        }
-        .m {
-            margin-right: 22px;
-            border-radius: 12px;
-        }
-        .Timestamp {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Timestamp:hover{
-            background-color: #333;
-        }
-        .Nitrogen {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Nitrogen:hover {
-            background-color: #333;
-        }
-        .Phosphorus {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Phosphorus:hover {
-            background-color: #333;
-        }
-        .Potassium {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Potassium:hover {
-            background-color: #333;
-        }
-    }
-    .thpr{
-        width: 70%;
-        height: 100px;
-        margin-top: 12px;
-        display: flex;
-        justify-content: center;
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-        p {
-            margin-top: 12px;
-            font-size: 24px;
-        }
-        .m {
-            margin-right: 22px;
-            border-radius: 12px;
-        }
-        .Temperature {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Temperature:hover{
-            background-color: #333;
-        }
-        .Humidity {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Humidity:hover {
-            background-color: #333;
-        }
-        .PH {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .PH:hover {
-            background-color: #333;
-        }
-        .Rainfall {
-            width: 18%;
-            height: 90%;
-            background-color: #63594C;
-            border: 2px solid #FFEAD9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        .Rainfall:hover {
-            background-color: #333;
-        }
-    }
-}
-.chart1 {
-    margin-top: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 350px;
 }
 .container {
+    width: 40%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 200px;
 }
 .chart {
-    padding: 2rem;
-    border: 1px solid #f49131;
-    border-radius: 1rem;
-    background: black;
+    width: 70%;
+    height: 70%;
+    border: none;
+    padding: 42px;
+    border-radius: 12px;
+    background: wheat;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+}
+
+.dashboard-text {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.row {
+    width: 80%;
+    height: 180px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 150px;
+        background-color: wheat;
+        border-radius: 12px;
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    }
+    .box:hover {
+        background-color: #333;
+    }
 }

@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #87ab69;
+    color: white;
+    position: fixed;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 120px;
+}
+
+.logo h1 {
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu a {
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.menu a i {
+    margin-right: 10px;
+}
+
+.menu a.active {
+    background-color: #338af3;
+}
+
+.menu a:hover {
+    background-color: #3a3f63;
+}
+
+.bar {
+    width: 100vw;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .box {
+        width: 35%;
+        height: 80%;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 22px;
+
+        h1{
+            color: #338af3;
+        }
+
+        p{
+            span{
+                color: whitesmoke;
+                border-radius: 4px;
+                background-color: #95bb72;
+            }
+        }
+    }
+}
+
+.btn {
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-right: 40px;
+
+    button {
+        width: 140px;
+        height: 50%;
+        margin-left: 12px;
+        margin-bottom: 12px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        color: white;
+        background-color: #338af3;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
+    }
+    button:hover {
+        background-color: #333;
+    }
+}
+.container {
+    width: 100vw;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+}
+.table-con {
+        width: 20%;
+        height: 350px;
+        margin-left: 280px;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        overflow-x: auto;
+        overflow-y: scroll;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background: #ecf0f1;
+        position: sticky;
+        top: 0;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:last-child {
+        border-bottom: none;
+    }
+
+    tbody tr:hover {
+        background: #f1f1f1;
+    }
+}
+
+.table-container {
+    width: 60%;
+    height: 550px;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    overflow-x: auto;
+    overflow-y: scroll;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    thead {
+        background: #ecf0f1;
+        position: sticky;
+        top: 0;
+    }
+    
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+    
+    th {
+        font-weight: bold;
+    }
+    
+    tbody tr {
+        border-bottom: 1px solid #ddd;
+    }
+    
+    tbody tr:last-child {
+        border-bottom: none;
+    }
+    
+    tbody tr:hover {
+        background: #f1f1f1;
+    }
+}
+
+.slider-container {
+    width: 230px;
+    height: 159px;
+    overflow: hidden;
+    position: absolute;
+    margin-left: 10px;
+    top: 770px;
+    z-index: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.slider {
+    display: flex;
+    width: 500%;
+    animation: slide 10s infinite linear;
+}
+
+.slide {
+    width: 20%;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(0); }
+    25% { transform: translateX(-20%); }
+    45% { transform: translateX(-20%); }
+    50% { transform: translateX(-40%); }
+    70% { transform: translateX(-40%); }
+    75% { transform: translateX(-60%); }
+    95% { transform: translateX(-60%); }
+    100% { transform: translateX(0); }
+}
+
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+}
+
+/* กล่องฟอร์ม */
+.modal-content {
+    background: white;
+    padding: 30px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+}
+
+/* ปุ่มปิด */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* ปุ่มในฟอร์ม */
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* ปรับให้ Modal อยู่ตรงกลาง */
+.modal.show {
+    display: flex;
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenSync</title>
 
+    <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
@@ -36,42 +37,49 @@
         </div>
     </div>
 
+    <div class="info">
+        <h1>Hello World</h1>
+    </div>
+
     <div class="dashboard">
+        <div class="container">
+            <div class="chart">
+                <div><canvas id="doughnut"></canvas></div>
+            </div>
+        </div>
         <div class="dashboard-text">
-            <h1>Dashboard</h1>
-            <div class="tnpp">
-                <div class="Timestamp m">
+            <div class="row">
+                <div class="box">
                     <p id="timestamp">0</p>
                     <h2>Timestamp</h2>
                 </div>
-                <div class="Nitrogen m">
+                <div class="box">
                     <p id="nitrogen">0</p>
                     <h2>Nitrogen</h2>
                 </div>
-                <div class="Phosphorus m">
+                <div class="box">
                     <p id="phosphorus">0</p>
                     <h2>Phosphorus</h2>                    
                 </div>
-                <div class="Potassium m">
+                <div class="box">
                     <p id="potassium">0</p>
                     <h2>Potassium</h2>                    
                 </div>
             </div>
-            
-            <div class="thpr">
-                <div class="Temperature m">
+            <div class="row">
+                <div class="box">
                     <p id="temperature">0</p>
                     <h2>Temperature</h2>                    
                 </div>
-                <div class="Humidity m">
+                <div class="box">
                     <p id="humidity">0</p>
                     <h2>Humidity</h2>                    
                 </div>
-                <div class="PH m">
+                <div class="box">
                     <p id="ph">0</p>
                     <h2>PH</h2>                    
                 </div>
-                <div class="Rainfall m">
+                <div class="box">
                     <p id="rainfall">0</p>
                     <h2>Rainfall</h2>                    
                 </div>
@@ -79,20 +87,9 @@
         </div>
     </div>
 
-    <div class="chart1">
-        <div class="container">
-            <div class="chart">
-                <div><canvas id="barchart"></canvas></div>
-            </div>
-            <div class="chart">
-                <div><canvas id="doughnut"></canvas></div>
-            </div>
-        </div>
-    </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    let chartInstance = null; // เก็บอ็อบเจ็กต์ Chart
     let chartdoughnut = null; // เก็บอ็อบเจ็กต์ Chart
     function fetchSensorData() {
             fetch("http://localhost:3000/clinic/sensor/realtime", {
@@ -117,35 +114,12 @@
 
                     const { Nitrogen, Phosphorus, Potassium, Temperature, Humidity, PH, Rainfall } = data.data;
 
-                    const ctx = document.getElementById("barchart");
                     const ctx2 = document.getElementById("doughnut");
 
                     // ทำลายกราฟเดิมก่อนสร้างใหม่
-                    if (chartInstance) {
-                        chartInstance.destroy();
-                    }
                     if (chartdoughnut) {
                         chartdoughnut.destroy();
                     }
-
-                    chartInstance = new Chart(ctx, {
-                        type: "bar",
-                        data: {
-                            labels: ["Nitrogen", "Phosphorus", "Potassium", "Temperature", "Humidity", "PH", "Rainfall"],
-                            datasets: [{
-                                label: "Sensor Data",
-                                data: [Nitrogen, Phosphorus, Potassium, Temperature, Humidity, PH, Rainfall],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                y: { beginAtZero: true }
-                            }
-                        }
-                    });
 
                     chartdoughnut = new Chart(ctx2, {
                         type: "doughnut",

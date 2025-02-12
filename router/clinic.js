@@ -88,5 +88,30 @@ router.get('/sensor/realtime', (req, res) => {
     res.json({ success: true, data });
 });
 
+    router.get("/plants", (req, res) => {
+      db.query("SELECT plants.PlantID, subplantname.PlantName, subplantseason.PlantSeason, subgrowth.GrowthStage, plants.CropDensity, plants.PestPressure FROM plants JOIN subplantname ON plants.PlantName = subplantname.PlantID2 JOIN subgrowth ON plants.GrowthStage = subgrowth.PlantID3 JOIN subplantseason ON plants.PlantSeason = subplantseason.PlantID11 ORDER BY plants.PlantID;", (err, result) => {
+          if (err) throw err;
+          res.json(result);
+      });
+    });
+
+    router.get("/plantname", (req, res) => {
+      db.query("SELECT * FROM subplantname ORDER BY PlantID2;", (err, result) => {
+          if (err) throw err;
+          res.json(result);
+      });
+    });
+
+    router.post("/add-plantname", (req, res) => {
+      const { PlantName } = req.body;
+      db.query("INSERT INTO subplantname (PlantName) VALUES (?);", [PlantName], (err, result) => {
+        if (err) {
+          res.json({ success: false, error: err.message });
+        } else {
+          res.json({ success: true, result });
+        }
+      });
+    });
+
   return router; // Return the router instance
 };

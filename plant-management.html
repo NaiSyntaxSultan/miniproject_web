@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSync</title>
+
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    
+    <div class="sidebar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+            <h1>GreenSync</h1>
+        </div>
+        
+        <div class="menu">
+            <a href="plant-dashboard.html"><i class="fas fa-plug"></i> Dashboard</a>
+            <a href="plant-management.html" class="active"><i class="fas fa-file-invoice-dollar"></i> Management</a>
+            <a href="#"><i class="fas fa-user-friends"></i> Members</a>
+            <a href="#"><i class="fas fa-folder"></i> Projects</a>
+            <a href="#"><i class="fas fa-credit-card"></i> Plans & Billing</a>
+            <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+            <a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </div>
+
+    <div class="bar">
+        <div class="box">
+            <h1>Management Module</h1><br>
+            <p>status: <span>Active</span></p>
+        </div>
+    </div>
+
+    <div class="btn">
+        <button onclick="openModal()"><i class="fa-solid fa-plus"></i> Add Plant</button>
+        <button><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <button><i class="fa-solid fa-delete-left"></i> Delete</button>
+    </div>
+
+    <div class="container">
+        <div class="table-con">
+            <table id="plantTable1">
+                <thead>
+                    <tr>
+                        <th>Plant ID</th>
+                        <th>Plant Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-container">
+            <table id="plantTable">
+                <thead>
+                    <tr>
+                        <th>Plant ID</th>
+                        <th>Plant Name</th>
+                        <th>Plant Season</th>
+                        <th>Growth Stage</th>
+                        <th>Crop Density</th>
+                        <th>Pest Pressure</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide"><img src="img/a.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="img/b.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="img/c.jpg" alt="Image 3"></div>
+            <div class="slide"><img src="img/d.jpg" alt="Image 4"></div>
+            <div class="slide"><img src="img/e.jpg" alt="Image 5"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("http://localhost:3000/clinic/plants")
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("#plantTable tbody");
+                    tableBody.innerHTML = "";
+                    data.forEach(plant => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${plant.PlantID}</td>
+                            <td>${plant.PlantName}</td>
+                            <td>${plant.PlantSeason}</td>
+                            <td>${plant.GrowthStage}</td>
+                            <td>${plant.CropDensity}</td>
+                            <td>${plant.PestPressure}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("http://localhost:3000/clinic/plantname")
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector("#plantTable1 tbody");
+                    tableBody.innerHTML = "";
+                    data.forEach(plant => {
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td>${plant.PlantID2}</td>
+                            <td>${plant.PlantName}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error("Error fetching data:", error));
+        });
+    </script>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Add Plant</h2>
+            <form id="subplantForm">
+                <label>Plant Name:</label>
+                <input type="text" id="plantName" placeholder="Enter your name" required>
+                <button id="submit" type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("modal").classList.add("show");
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.remove("show");
+        }
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('subplantForm');
+    const submit = document.getElementById('submit');
+    const plantName = document.getElementById('plantName');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // ป้องกันการ reload หน้าเว็บ
+
+        const formData = {
+            PlantName: plantName.value,
+        };
+
+        console.log("Data to send:", formData); //  ตรวจสอบค่าก่อนส่ง
+
+        fetch('http://localhost:3000/clinic/add-plantname', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData) //  ส่งค่าจริง ๆ ไป
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('PlantName created successfully!');
+                closeModal();
+                location.reload();
+            } else {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});
+
+</script>
+
+</body>
+</html>
